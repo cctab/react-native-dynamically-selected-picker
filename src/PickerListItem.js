@@ -7,7 +7,7 @@ export default function PickerListItem({
   itemColor,
   allItemsColor,
   fontSize,
-  fontFamily = 'Arial',
+  fontFamily
 }) {
   return (
     <View style={style}>
