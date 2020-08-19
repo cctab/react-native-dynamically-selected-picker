@@ -148,7 +148,7 @@ export default class DynamicallySelectedPicker extends React.Component {
           }}
           scrollEventThrottle
           initialScrollIndex={itemIndex}
-          snapToInterval={itemHeight}
+          snapToInterval={itemHeight}>
           {this.extendedItems().map((item, index) => {
             return (
               <PickerListItem
