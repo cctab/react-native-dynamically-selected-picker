@@ -111,6 +111,7 @@ export default class DynamicallySelectedPicker extends React.Component {
 
   render() {
     const {itemIndex, itemHeight} = this.state;
+    const yOffset = itemHeight * itemIndex;
     const {
       width,
       height,
@@ -144,7 +145,8 @@ export default class DynamicallySelectedPicker extends React.Component {
           }}
           scrollEventThrottle
           initialScrollIndex={itemIndex}
-          snapToInterval={itemHeight}>
+          snapToInterval={itemHeight}
+          contentOffset={{x: 0, y: yOffset}}>
           {this.extendedItems().map((item, index) => {
             return (
               <PickerListItem
