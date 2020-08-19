@@ -9,10 +9,7 @@ export default class DynamicallySelectedPicker extends React.Component {
     super(props);
 
     let itemHeight =
-      this.props.height / (this.props.transparentItemRows * 2 + 1);
-    if (Platform.OS === 'ios') {
-      itemHeight = Math.ceil(itemHeight);
-    }
+      Math.ceil(this.props.height / (this.props.transparentItemRows * 2 + 1));    
 
     this.state = {
       itemHeight: itemHeight,
@@ -109,6 +106,11 @@ export default class DynamicallySelectedPicker extends React.Component {
     ];
   }
 
+  scrollToInitialPosition = () => {
+    const {itemIndex, itemHeight} = this.state;
+    this.scrollViewRef.scrollTo({ y: itemHeight * itemIndex });
+  }
+
   render() {
     const {itemIndex, itemHeight} = this.state;
     const yOffset = itemHeight * itemIndex;
@@ -126,6 +128,8 @@ export default class DynamicallySelectedPicker extends React.Component {
     return (
       <View style={{height: height, width: width}}>
         <ScrollView
+          ref={(ref) => { this.scrollViewRef = ref; }}
+          onLayout={this.scrollToInitialPosition}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           onMomentumScrollBegin={(event) => {
