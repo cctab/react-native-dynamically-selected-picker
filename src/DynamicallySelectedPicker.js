@@ -221,7 +221,7 @@ DynamicallySelectedPicker.defaultProps = {
   initialSelectedIndex: 0,
   transparentItemRows: 3,
   allItemsColor: '#000',
-  fontFamily,
+  fontFamily: 'System',
   selectedItemBorderColor: '#cecece',
   topGradientColors: [
     'rgba( 255, 255, 255, 1 )',
